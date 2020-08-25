@@ -1,0 +1,63 @@
+<ng-container *ngIf="selectedBlog && isDisplaying; else elseTemplate">
+  <div class="container-mine">
+    <button (click)="unSelect()" class="btn">
+      Back
+    </button>
+    <button (click)="update(selectedBlog.id)" class="btn update">
+      Update
+    </button>
+    <button (click)="delete()" class="btn del">
+      Delete
+    </button>
+    <div class="mine-container">
+      <img src="{{ selectedBlog.img }}" alt="{{ selectedBlog.heading }}" />
+      <div class="mine-content">
+        <h3>{{ selectedBlog.heading }}</h3>
+        <p class="word-break">{{ selectedBlog.content }}</p>
+        <p class="date">
+          {{ selectedBlog.author }} - {{ selectedBlog.date | date }}
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <div class="container-mine">
+    <h2>
+      Your Blogs
+    </h2>
+    <a [routerLink]="'/Newblog'" style="text-decoration: none;">
+      <div class="blog-container plus">
+        <p
+          style="
+            text-align: center;
+            font-size: 50px;
+            width: 100%;
+            color: black;
+          "
+        >
+          <span style="display: block; font-size: 30px;">New blog</span>+
+        </p>
+      </div></a
+    >
+    <div
+      *ngFor="let blog of blogs"
+      (click)="selectBlog(blog)"
+      class="blog-container"
+      style="z-index: 200;"
+    >
+      <img src="{{ blog.img }}" alt="{{ blog.heading }}" />
+      <div class="content">
+        <h3>{{ blog.heading }}</h3>
+        <p class="word-break">{{ blog.content.slice(0, 200) }}</p>
+        <p class="date">{{ blog.author }} - {{ blog.date | date }}</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center;" class="pgnumdiv">
+    <button *ngIf="!start" (click)="pgDecrement()">
+      <</button
+    ><span>{{ pgNum }}</span
+    ><button *ngIf="!end" (click)="pgIncrement()">></button>
+  </div>
+</ng-template>

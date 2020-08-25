@@ -1,0 +1,57 @@
+h2 {
+  text-align: center;
+  font-size: 40px;
+}
+div.flex > div {
+  background: hsl(190, 100%, 50%);
+  width: 40%;
+  border-radius: 20px;
+  padding: 20px;
+}
+div.flex {
+  background: transparent;
+  height: 90vh;
+  justify-content: center;
+  align-content: center;
+  margin: 0 auto;
+  margin-top: -20px;
+  flex-flow: column wrap;
+  display: flex;
+}
+input {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px black solid;
+  outline: none;
+  margin: 20px 0;
+  padding: 10px 0;
+  text-align: center;
+}
+button {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px 0;
+  font-size: 20px;
+  color: white;
+  z-index: 1;
+  position: relative;
+  background: black;
+}
+button::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  border-radius: 10px;
+  top: 0;
+  left: 0;
+  transform: scale(0, 0);
+  width: 100%;
+  z-index: -2;
+  transition: transform 0.5s ease-out;
+  background: blue;
+}
+button:hover::after {
+  transform: scale(1, 1);
+}

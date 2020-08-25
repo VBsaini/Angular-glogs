@@ -1,0 +1,48 @@
+<div class="main-nav">
+  <ul>
+    <li class="logo">
+      <a href="#">
+        Glogs
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="'/'">
+        Home
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="'/blogs'">
+        Blogs
+      </a>
+    </li>
+    <ng-container *ngIf="valid; else elseTemplate">
+      <li>
+        <a [routerLink]="'/your-blogs'">
+          your Blogs
+        </a>
+      </li>
+      <li (click)="logout()" class="logout">
+        <a>
+          logOut
+        </a>
+      </li>
+      <li *ngIf="data.user.username">
+        <a href="#" class="name">
+          {{ data.user.username }}
+        </a>
+      </li>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <li>
+        <a routerLink="/user/login">
+          Login
+        </a>
+      </li>
+      <li>
+        <a routerLink="/user/signup">
+          Sign Up
+        </a>
+      </li>
+    </ng-template>
+  </ul>
+</div>

@@ -1,0 +1,40 @@
+.header {
+  background-image: url("https://unsplash.com/photos/7EK5WABscqw/download?force=true&w=640");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.col h1 {
+  text-align: center;
+  padding: 70px 0;
+  margin: 0;
+  font-size: 40px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-family: sans-serif;
+}
+
+.col-2:first-child {
+  margin-top: 20px;
+}
+.second-section {
+  display: flex;
+}
+.col-2 {
+  width: 100%;
+  padding-left: 20px;
+}
+.col-2 h2 {
+  font-size: 30px;
+  font-family: monospace;
+}
+.col-2 p {
+  font-size: 18px;
+  font-family: monospace;
+}
+.col h1 .secondary-color {
+  background: #00d5ff;
+  padding: 10px;
+  color: black;
+  border-radius: 20px;
+}

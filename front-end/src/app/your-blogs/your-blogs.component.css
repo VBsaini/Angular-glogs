@@ -1,0 +1,84 @@
+.container-mine {
+  margin: 20px 50px;
+}
+h2 {
+  font-size: 40px;
+}
+.blog-container {
+  display: flex;
+  padding: 20px;
+  cursor: pointer;
+  background: gray;
+  margin: 20px 0;
+}
+.blog-container img {
+  width: 20%;
+}
+.content {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+.content h3 {
+  margin-bottom: 20px;
+}
+.btn {
+  padding: 5px 10px;
+  margin: 20px 0;
+  font-size: 20px;
+  border: none;
+  background: yellowgreen;
+}
+.btn:hover,
+.btn:focus {
+  opacity: 0.8;
+}
+.mine-container {
+  background: gray;
+  padding: 50px;
+}
+.mine-content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  font-size: 20px;
+}
+.mine-content h3 {
+  font-size: 30px;
+}
+.mine-content > * {
+  margin-top: 10px;
+}
+.date {
+  justify-self: flex-end;
+  margin-top: auto;
+}
+.mine-content > .date {
+  margin-top: 50px;
+}
+.word-break {
+  word-break: break-all;
+}
+.pgnumdiv {
+  font-size: 50px;
+  widows: 50px;
+}
+.pgnumdiv button {
+  padding: 10px;
+  background: white;
+  transition: background 0.5s;
+  border: none;
+  margin: 15px;
+}
+.pgnumdiv button:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+.update {
+  margin-left: 20px;
+  background: lightblue;
+}
+.del {
+  margin-left: 20px;
+  background: lightcoral;
+}

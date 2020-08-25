@@ -1,0 +1,31 @@
+<div class="flex">
+  <div class="container-mine">
+    <h1>New Glog</h1>
+    <form>
+      <input
+        type="text"
+        #heading
+        id="heading"
+        (input)="headingChange(heading.value)"
+        placeholder="Heading"
+      />
+      <input
+        type="text"
+        #content
+        id="content"
+        (input)="contentChange(content.value)"
+        placeholder="Content"
+      />
+      <input
+        type="text"
+        #imageurl
+        id="imageurl"
+        (input)="imageUrlChange(imageurl.value)"
+        placeholder="Image url"
+      />
+      <button (click)="Submit()">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

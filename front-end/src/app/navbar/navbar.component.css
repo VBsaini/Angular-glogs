@@ -1,0 +1,41 @@
+.main-nav {
+  background: #00d5ff;
+}
+ul {
+  display: flex;
+  justify-content: flex-end;
+}
+li {
+  list-style: none;
+  margin: 20px 20px;
+}
+a {
+  color: black;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  font-size: 20px;
+  text-decoration: none;
+  padding-bottom: 10px;
+}
+a:hover,
+a:focus {
+  border-bottom: 2px solid black;
+}
+.logo {
+  margin-right: auto;
+}
+.name {
+  letter-spacing: 3px;
+  text-transform: capitalize;
+  cursor: pointer;
+  border-bottom: 2px solid black;
+}
+.logout {
+  cursor: pointer;
+}
+ul {
+  margin: 0;
+}
+.name:hover {
+  border-bottom-color: red;
+}

@@ -1,0 +1,47 @@
+<!-- <ng-container *ngIf="success; else elseTemplate"> </ng-container> -->
+<!-- <ng-template #elseTemplate> -->
+<ng-container *ngIf="login; else elseTemplate">
+  <div class="flex">
+    <div>
+      <h2>login</h2>
+      <form>
+        <input
+          type="text"
+          placeholder="Name"
+          name="name"
+          [(ngModel)]="username"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          [(ngModel)]="password"
+        />
+        <button (click)="submit()">Log In</button>
+      </form>
+    </div>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <div class="flex">
+    <div>
+      <h2>Signup</h2>
+      <form>
+        <input
+          type="text"
+          placeholder="Name"
+          name="name"
+          [(ngModel)]="username"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          [(ngModel)]="password"
+        />
+        <button (click)="submit()">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</ng-template>
+<!-- </ng-template> -->

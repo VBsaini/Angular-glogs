@@ -1,0 +1,32 @@
+<div class="flex">
+  <div>
+    <h1>Update Glog</h1>
+    <form>
+      <input
+        type="text"
+        #heading
+        (input)="headingUpdate(heading.value)"
+        value="{{ blog.heading }}"
+      />
+      <input
+        type="text"
+        #content
+        (input)="contentUpdate(content.value)"
+        value="{{ blog.content }}"
+      />
+      <input
+        type="text"
+        #imageurl
+        (input)="imageUrlUpdate(imageurl.value)"
+        value="{{ blog.img }}"
+      />
+      <button
+        (click)="
+          imageUrlUpdate(imageurl.value); contentUpdate(content.value); update()
+        "
+      >
+        Update
+      </button>
+    </form>
+  </div>
+</div>
