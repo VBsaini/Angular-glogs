@@ -61,7 +61,7 @@ app.post("/users", (req, res) => {
                 console.log(err);
                 return res.status(200).json({ err: err });
             } else {
-                console.log(user);
+                // console.log(user);
                 passport.authenticate("local")(req, res, function () {
                     req.login(user, function (err) {
                         if (err) {
@@ -116,11 +116,12 @@ app.post("/new", isvalid, (req, res) => {
                     console.log(err);
                 } else {
                     user.blogs.push(blog);
-                    console.log(user);
+                    // console.log(user);
                     user.save().then((user) => console.log(user));
                 }
             });
             console.log(blog);
+
             // console.log(typeof req.user.username);
         })
         .catch((e) => console.log(e));
@@ -139,7 +140,7 @@ app.put("/blog/:id", isvalid, (req, res) => {
 });
 app.delete("/blogs/:id", isvalid, (req, res) => {
     Blog.findOneAndDelete({ id: req.params.id })
-        .then((blog) => res.status(200).json({ message: "delete successful " }))
+        .then((blog) => {})
         .catch((e) => {
             console.log(e);
             return res
@@ -147,8 +148,9 @@ app.delete("/blogs/:id", isvalid, (req, res) => {
                 .json({ message: "delete unsuccessful", err: e });
         });
 });
-app.get("/blogs/user/:id", isvalid, (req, res) => {
-    Blog.findById(req.params.id)
+app.get("/blogs/user/", isvalid, (req, res) => {
+    User.findById(req.user._id)
+        .populate("blogs")
         .then((blog) => res.status(200).json({ blog }))
         .catch((e) => console.log(e));
 });
@@ -170,7 +172,6 @@ function isvalid(req, res, next) {
         return res.status(401).json({ Message: "invalid Request nako" });
     }
 }
-
 // ============================== listen =======================
 port = process.env.port || 3000;
 app.listen(port, () => console.log(`server running on port ${port}`));

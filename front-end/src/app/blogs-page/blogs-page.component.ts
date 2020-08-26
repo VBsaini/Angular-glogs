@@ -22,6 +22,7 @@ export class BlogsPageComponent implements OnInit {
     this.checkValidity();
   }
   start = true;
+  pgswitch = false;
   pgNum = 1;
   end = false;
   startingNum = 0;
@@ -53,6 +54,11 @@ export class BlogsPageComponent implements OnInit {
   getBlogs() {
     this.BlogsService.getBlogs().subscribe((data) => {
       this.blogs = data.slice(this.startingNum, this.endingNum);
+      if (data.length <= 5) {
+        this.pgswitch = false;
+      } else {
+        this.pgswitch = true;
+      }
     });
   }
   checkValidity() {

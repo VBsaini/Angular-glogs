@@ -18,24 +18,14 @@ export class YourBlogsComponent implements OnInit {
   }
   getblogs() {
     this.data = [];
-    this.blogsService.isValid().subscribe((data) => {
-      this.blogsService.getUser(data.user._id).subscribe((userData) => {
-        userData.blogs.forEach((one) => {
-          this.blogsService.getUserBlog(one).subscribe((UserBlogs) => {
-            if ((UserBlogs.blogs = null)) {
-              return;
-            } else {
-              this.data.push(UserBlogs.blog);
-              if (this.data.length > 5) {
-                console.log(this.data);
-                this.blogs = this.data.slice(this.startingNum, this.endingNum);
-              } else {
-                this.blogs = this.data;
-              }
-            }
-          });
-        });
-      });
+    this.blogsService.getUserBlog().subscribe((UserBlogs) => {
+      this.data = UserBlogs.blog.blogs;
+      console.log(UserBlogs.blog.blogs);
+      if (this.data.length < 5) {
+        this.blogs = this.data;
+      } else {
+        this.blogs = this.data.slice(this.startingNum, this.endingNum);
+      }
     });
   }
   start = true;

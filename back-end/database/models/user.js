@@ -21,6 +21,7 @@ const userSchema = new mongoose.Schema({
         type: Date,
     },
 });
+// userSchema.pre("delete", )
 userSchema.plugin(pLocalMongoose);
 const User = mongoose.model("User", userSchema);
 

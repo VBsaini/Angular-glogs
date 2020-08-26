@@ -11,8 +11,8 @@ export class BlogsService {
   getBlogs() {
     return this.fetch.get('blogs');
   }
-  getUserBlog(id) {
-    return this.fetch.get(`blogs/user/${id}`);
+  getUserBlog() {
+    return this.fetch.get(`blogs/user`);
   }
   getUser(id) {
     return this.fetch.get(`User/${id}`);
