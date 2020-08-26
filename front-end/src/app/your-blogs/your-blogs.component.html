@@ -1,14 +1,8 @@
 <ng-container *ngIf="selectedBlog && isDisplaying; else elseTemplate">
   <div class="container-mine">
-    <button (click)="unSelect()" class="btn">
-      Back
-    </button>
-    <button (click)="update(selectedBlog.id)" class="btn update">
-      Update
-    </button>
-    <button (click)="delete()" class="btn del">
-      Delete
-    </button>
+    <button (click)="unSelect()" class="btn">Back</button>
+    <button (click)="update(selectedBlog.id)" class="btn update">Update</button>
+    <button (click)="delete()" class="btn del">Delete</button>
     <div class="mine-container">
       <img src="{{ selectedBlog.img }}" alt="{{ selectedBlog.heading }}" />
       <div class="mine-content">
@@ -23,20 +17,13 @@
 </ng-container>
 <ng-template #elseTemplate>
   <div class="container-mine">
-    <h2>
-      Your Blogs
-    </h2>
-    <a [routerLink]="'/Newblog'" style="text-decoration: none;">
+    <h2>Your Blogs</h2>
+    <a [routerLink]="'/Newblog'" style="text-decoration: none">
       <div class="blog-container plus">
         <p
-          style="
-            text-align: center;
-            font-size: 50px;
-            width: 100%;
-            color: black;
-          "
+          style="text-align: center; font-size: 50px; width: 100%; color: black"
         >
-          <span style="display: block; font-size: 30px;">New blog</span>+
+          <span style="display: block; font-size: 30px">New blog</span>+
         </p>
       </div></a
     >
@@ -44,7 +31,7 @@
       *ngFor="let blog of blogs"
       (click)="selectBlog(blog)"
       class="blog-container"
-      style="z-index: 200;"
+      style="z-index: 200"
     >
       <img src="{{ blog.img }}" alt="{{ blog.heading }}" />
       <div class="content">
@@ -54,9 +41,8 @@
       </div>
     </div>
   </div>
-  <div style="text-align: center;" class="pgnumdiv">
-    <button *ngIf="!start" (click)="pgDecrement()">
-      <</button
+  <div style="text-align: center" class="pgnumdiv" *ngIf="pgswitch">
+    <button *ngIf="!start" (click)="pgDecrement()"><</button
     ><span>{{ pgNum }}</span
     ><button *ngIf="!end" (click)="pgIncrement()">></button>
   </div>

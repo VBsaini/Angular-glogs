@@ -12,6 +12,7 @@ export class YourBlogsComponent implements OnInit {
     private FlashMessagesService: FlashMessagesService
   ) {}
   blogs;
+  pgswitch = false;
   data = [];
   ngOnInit(): void {
     this.getblogs();
@@ -23,7 +24,9 @@ export class YourBlogsComponent implements OnInit {
       console.log(UserBlogs.blog.blogs);
       if (this.data.length < 5) {
         this.blogs = this.data;
+        this.pgswitch = false;
       } else {
+        this.pgswitch = true;
         this.blogs = this.data.slice(this.startingNum, this.endingNum);
       }
     });

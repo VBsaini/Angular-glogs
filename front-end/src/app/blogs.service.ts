@@ -36,9 +36,9 @@ export class BlogsService {
       console.log(data);
     });
   }
-  checkUser(data) {
-    return this.fetch.post('users/login', data);
-  }
+  // checkUser(data) {
+  //   return this.fetch.post('users/login', data);
+  // }
   goToUpdate(id) {
     this.router.navigate([`/update/${id}`]);
   }

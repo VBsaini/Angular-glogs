@@ -80,6 +80,9 @@ app.post("/users", (req, res) => {
 });
 app.post("/users/login", (req, res) => {
     passport.authenticate("local")(req, res, function (err, user, info) {
+        if (!user) {
+            return res.status(200).json({ message: err, user: user });
+        }
         return res.status(200).json({ user: req.user });
     });
 });

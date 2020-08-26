@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogsService } from '../blogs.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -11,6 +12,7 @@ export class UserComponent implements OnInit {
   constructor(
     private ActivatedRoute: ActivatedRoute,
     private router: Router,
+    private HttpClient: HttpClient,
     private blogservice: BlogsService,
     private flashmessages: FlashMessagesService
   ) {
@@ -28,28 +30,39 @@ export class UserComponent implements OnInit {
   }
   password;
   username;
-  submit() {
+  async submit() {
     let success;
     let data = {
       username: this.username,
       password: this.password,
     };
     if (this.login) {
-      this.blogservice.checkUser(data).subscribe((data) => {
-        success = data;
-        if (success) {
-          this.flashmessages.show('Welcome Back', {
-            cssClass: 'alert alert-success',
-            timeout: 2000,
-          });
-          // this.router.navigate(['/blogs']);
-          return;
+      this.HttpClient.post('http://localhost:3000/users/login', data, {
+        observe: 'response',
+        withCredentials: true,
+        headers: new HttpHeaders().append('Content-Type', 'application/json'),
+      }).subscribe(
+        (data) => {
+          success = data;
+          console.log(data.status);
+          if (success) {
+            this.flashmessages.show('Welcome Back', {
+              cssClass: 'alert alert-success',
+              timeout: 2000,
+            });
+            this.router.navigate(['/blogs']);
+            return;
+          }
+        },
+        (err) => {
+          if (err) {
+            this.flashmessages.show('password or username is incorrect', {
+              cssClass: 'alert alert-danger',
+              timeout: 2000,
+            });
+          }
         }
-      });
-      this.flashmessages.show('password or username is incorrect', {
-        cssClass: 'alert alert-danger',
-        timeout: 2000,
-      });
+      );
     } else {
       this.blogservice.postUser(data).subscribe((data) => {
         success = data;
